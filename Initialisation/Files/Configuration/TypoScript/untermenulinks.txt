@@ -1,0 +1,48 @@
+# Dieser Code wird von den Template zweispaltung und dreispaltig aus angesprungen
+#
+lib.field_submenu = HMENU
+lib.field_submenu {
+  entryLevel = 2
+  1 = TMENU
+  1 {
+    expAll = 0
+    noBlur = 1
+    NO.linkWrap = <li role="presentation" class="ebene1">|</li>
+    NO = 1
+  }
+  1.RO < .1.NO
+  1.ACT < .1.NO
+  1.ACT.linkWrap = <li role="presentation" class="ebene1 active">|</li>
+
+  1.IFSUB < .1.NO
+  1.IFSUB.stdWrap.dataWrap =  |<span class="caret"></span>
+
+  1.ACTIFSUB < .1.ACT
+  1.ACTIFSUB.stdWrap.dataWrap =  |<span class="caret white"></span>
+
+  2 = TMENU
+  2 < lib.field_submenu.1
+  2.NO.linkWrap = <li role="presentation" class="ebene2">|</li>
+  2.RO < .2.NO
+  2.ACT.linkWrap = <li role="presentation" class="ebene2 active">|</li>
+  2.IFSUB < .2.NO
+  2.IFSUB.stdWrap.dataWrap =  |<span class="caret"></span>
+
+  2.ACTIFSUB < .2.ACT
+  2.ACTIFSUB.stdWrap.dataWrap =  |<span class="caret white"></span>
+
+
+  3 = TMENU
+  3 < lib.field_submenu.1
+  3.NO.linkWrap = <li role="presentation" class="ebene3">|</li>
+  3.RO < .3.NO
+  3.ACT.linkWrap = <li role="presentation" class="ebene3 active">|</li>
+  3.IFSUB < .3.NO
+  3.IFSUB.stdWrap.dataWrap =  |<span class="caret"></span>
+ 
+  3.ACTIFSUB < .3.ACT
+  3.ACTIFSUB.stdWrap.dataWrap =  |<span class="caret white"></span>
+
+}
+
+ 

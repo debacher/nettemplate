@@ -1,0 +1,182 @@
+page = PAGE
+page {
+  # der Body-Tag bekommt die Seiten-ID als id
+  bodyTag >
+  bodyTagCObject = TEXT
+  bodyTagCObject.dataWrap = <body id="uid-{field:uid}">
+  
+  config.index_enable = 1
+
+  # Seite: subtitle als titel
+  headerData.112 = TEXT
+  headerData.112.field = title
+  headerData.112.wrap = <title>{$plugin.nettemplate.TitleText}|</title>
+  # es ist noch config.noPageTitle = 2 notwendig (s.u.)
+
+  # hier binden wir die CSS-Datein im Head-Bereich ein
+  includeCSS {
+    bootstrap = {$resDir}/Public/Css/Bootstrap/css/bootstrap.css
+    magnific  = {$resDir}/Public/Css/magnific-popup.css
+    anpassung = {$resDir}/Public/Css/anpassung.css
+  } # Ende includeCSS
+
+  # Meta-Tags und Informationen
+  meta {
+    X-UA-Compatible = IE=edge,chrome=1
+    X-UA-Compatible.httpEquivivalent=1
+    viewport = width=device-width,initial-scale=1
+    keywords.field = keywords
+    keywords.ifEmpty = {$plugin.nettemplate.defaultKeywords}
+    description.field = description
+    description.ifEmpty = {$plugin.nettemplate.defaultDescription}
+  } # Ende meta
+
+  # wir arbeiten mit Fluid-Templates
+  10 = FLUIDTEMPLATE
+  10 {
+    partialRootPath = {$resDir}/Private/Partials
+    layoutRootPath = {$resDir}/Private/Layouts
+ 
+    variables {
+      inhaltLinks < styles.content.get
+      inhaltLinks.select.where = colPos = 1
+      inhaltLinks.slide = -1
+      hauptInhalt < styles.content.get
+      hauptInhalt.select.where = colPos = 0
+      inhaltRechts < styles.content.get
+      inhaltRechts.select.where = colPos = 2
+      inhaltRechts.slide = -1
+    } # Ende variables
+ 
+    #file = {$resDir}/Private/Templates/zweispaltig.html
+ 
+    file.stdWrap.cObject = CASE
+    file.stdWrap.cObject {
+  
+      key.data = levelfield:-1, backend_layout_next_level, slide
+      key.override.field = backend_layout
+      #  key.data = pagelayout
+      default = TEXT
+      default.value =  {$resDir}/Private/Templates/einspaltig.html
+      pagets__Einspaltig < .default
+      pagets__Zweispaltig < .default
+      pagets__Zweispaltig.value =  {$resDir}/Private/Templates/zweispaltig.html
+      pagets__Dreispaltig < .default
+      pagets__Dreispaltig.value =  {$resDir}/Private/Templates/dreispaltig.html
+    }  
+  } # Ende FLUIDTEMPLATE
+
+
+  # Einstellunge für alte Browser
+  headerData.20 = TEXT
+  headerData.20.value (
+<!-- Unterstützung für Media Queries und HTML5-Elemente im Internet Explorer über HTML5 shim und Respond.js -->
+<!-- ACHTUNG: Respond.js funktioniert nicht, wenn du die Seite über file:// aufrufst -->
+<!--[if lt IE 9]>
+<script src="{$resDir}/Public/JavaScript/html5shiv.js"></script>
+<script src="{$resDir}/Public/JavaScript/respond.min.js"></script>
+<style type="text/css">          
+  ul.nav {height: auto;}
+  .equal { margin-bottom: -99999px; padding-bottom: 99999px;}
+  .equalheight { overflow: hidden; }
+</style>
+<![endif]-->
+  )
+
+} # Ende Page
+
+config {  
+  # moderne Einstellung  
+  doctype = html5  
+  htmlTag_setParams = lang="de" dir="ltr"    
+  xhtml_cleaning = none  
+  
+  # gehört zum subtitle als titel (s.o.)  
+  noPageTitle = 2  
+  
+  # in den einleitenden Typo3-Kommentar  
+  headerComment = Templates von Netthelp.de  
+  
+  # einfach alle Einstellmöglichkeiten nutzen  
+  language = de  
+  htmlTag_langKey = de  
+  sys_language_uid = 0  
+  locale_all = de_DE  
+  
+  # kein Hochskalieren von Abbildung  
+  noScaleUp = 1  
+  
+  sendCacheHeaders = 1  
+  
+  # css und js Dateien von Typo3 werden je in einer temp-Datei zusammengefasst  
+  inlineStyle2TempFile = 1  
+#  removeDefaultJS = external  
+#  removeDefaultJS = 1  
+  
+#neu  
+# compressJs = 1   
+# compressCss = 1  
+  
+# concatenateCss = 1  
+# concatenateJs = 1  
+  
+  # für die Suche  
+  index_enable = 1  
+  sword_standAlone = 0  
+  sword_noMixedCase = 0  
+  
+  # für die Ziele von Links  
+  intTarget = _self  
+  extTarget = _blank  
+  
+  # spamProtectEmailAddresses = 1  
+  spamProtectEmailAddresses = ascii  
+  spamProtectEmailAddresses_atSubst = (at)  
+  spamProtectEmailAddresses_lastDotSubst = (dot)  
+  
+  prefixLocalAnchors = 1
+  simulateStaticDocuments = 0
+  tx_realurl_enable = {$plugin.nettemplate.useRealURL}
+  absRelPath = /
+  absRefPrefix = /
+  disablePrefixComment = 1
+} #Ende config
+
+
+# hier binden wir weiteres Typoscript ein, thematisch gegliedert 
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/headerimage.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/rootline.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/servicemenu.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/untermenulinks.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/footer.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/magnificpopup.txt">
+# drei Alternativen für das Hauptmenü
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/mainmenu.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/dropdownmenu.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/dropdownmenuresp.txt">
+
+# welche Art von Hauptmenü, Klassisch (1), DropDown (2) oder DropDown responsive (3)
+lib.mainnav < lib.mainNav{$plugin.nettemplate.MenuArt}
+
+#config.contentObjectExceptionHandler = 0
+
+# Einstellungen für die Suche
+plugin.tx_indexedsearch {
+   # search.rootPidList=1
+   # Anzeige der Regeln unter dem einfachen Formular
+     settings.displayRules = 0
+   # erweiterte Suche abschalten
+     settings.displayAdvancedSearchLink = 1
+   # show the number of results
+     settings.displayResultNumber = 0
+}
+
+# Einstellungen für die news
+plugin.tx_news.settings.detail.showSocialShareButtons = 0
+plugin.tx_news.settings.detail.media.image.lightbox.enabled = 1
+
+lib.contentElement.settings.media.popup {
+   JSwindow = 0
+   directImageLink = 1
+   linkParams.ATagParams.dataWrap = class="lightbox" rel="lightbox{field:uid}"  title="{file:current:title}"   
+}

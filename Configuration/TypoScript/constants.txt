@@ -1,0 +1,18 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/nettemplate/Configuration/TypoScript/constants.txt">
+plugin.nettemplate {
+      # cat=plugin.nettemplate/other; type=int+; label=Startseite Service Menu
+      ServicePid = 4
+      # cat=plugin.nettemplate/other; type=int[1-3]; label=Hauptmenu Klasisch (1), DropDown (2), DropDown responsive (3)
+      MenuArt = 2
+      #cat=plugin.nettemplate/other; type=boolean; label=aktiviere RealURL (realurl_conf.php kopiert)
+      useRealURL = 0
+      # cat=plugin.nettemplate/other; type=string; label=Title Text
+      TitleText = Netthelp.de: &nbsp;
+      # cat=plugin.nettemplate/other; type=string; label=Standard-Text für Metatag description
+      defaultDescription = Dies ist eine von Netthelp erstellte Seite
+      # cat=plugin.nettemplate/other; type=string; label=Standard Keywords
+      defaultKeywords = Netthelp, Richard-Linde-Weg, Lohbrügge  
+      # cat=plugin.nettemplate/other; type=string; label=Footer Text
+      FooterText = <br />&copy; &nbsp; Netthelp.de
+
+}  

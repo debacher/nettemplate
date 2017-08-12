@@ -1,0 +1,16 @@
+# Dieser Code wird vom Partial footer angesprungen
+lib.field_footer = TEXT
+lib.field_footer {
+    data = date : Y
+    wrap (
+  {$plugin.nettemplate.FooterText} (|)
+  )
+}
+
+#lib.field_footer = CONTENT
+#lib.field_footer {
+#    table = tt_content
+#    select.pidInList = 21
+#    select.uidInList = 143
+#    select.languageField = sys_language_uid
+#  }

@@ -1,0 +1,23 @@
+# dieser Code wird vom Root Template aus angesprungen
+# zur Auswahl stehen drei Arten des Menüs
+# das Hauptmenü hat nur eine Ebenen
+#
+lib.mainNav1 = HMENU
+lib.mainNav1 {
+#  special = directory
+#  special.value = 15
+entryLevel = 1
+
+
+  1 = TMENU
+  1 {
+    expAll = 0
+    noBlur = 1
+    NO = 1
+    NO.linkWrap = <li>|</li>
+  }
+  1.RO < .1.NO
+
+  1.ACT < .1.NO
+  1.ACT.linkWrap = <li class="active">|</li>
+}

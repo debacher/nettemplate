@@ -1,0 +1,46 @@
+<f:layout name="DefaultLayout" />
+<f:section name="inhalt">
+
+<div id="zweispaltig">
+
+  <div class="container">
+   
+    <div class="row" id="header">
+      <div class="col-md-12"><f:cObject typoscriptObjectPath="lib.field_headerimage" /></div>
+    </div>
+    <f:render partial="navbar" />
+    <f:render partial="service" />
+    <f:render partial="rootline" />
+ 
+    <div id="inhalt" class="row equalheight">
+
+      <div class="col-md-3 equal" id="spalte-links">
+        <div id="menu-links">
+          <a id="subnav" name="subnav"></a><ul class="nav nav-pills  nav-stacked" role="tablist">
+          <f:cObject typoscriptObjectPath="lib.field_submenu" />
+        </ul>
+        </div>
+        <div id="inhalt-links">
+          <!--TYPO3SEARCH_begin-->
+          <f:format.raw>{inhaltLinks}</f:format.raw>
+          <!--TYPO3SEARCH_end-->
+        </div>
+      </div>
+
+      <div class="col-md-9 equal" id="hauptinhalt">
+        <a id="content" name="content"></a>
+          <!--TYPO3SEARCH_begin-->
+          <f:if condition="{data.subtitle}">
+              <f:then><h1 class="pagetitle">{data.subtitle}</h1><br></f:then>
+              <f:else><h1 class="pagetitle">{data.title}</h1><br></f:else>
+          </f:if>
+          <f:format.raw>{hauptInhalt}</f:format.raw>
+          <!--TYPO3SEARCH_end-->
+        <p style="font-size:0px">&nbsp;<p>
+      </div>
+
+    </div>
+    <f:render partial="footer" />
+  </div>
+ </div>
+</f:section>

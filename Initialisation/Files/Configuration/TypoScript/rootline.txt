@@ -1,0 +1,10 @@
+# Dieser Code wird vom Partial rootline angesprungen
+lib.field_rootline = HMENU
+lib.field_rootline {
+   special = rootline
+   wrap=<ol class="breadcrumb"><li>&nbsp;<a href="/index.php">Klickpfad</a>&nbsp;</li>|</ol>
+   special.range = 2 | -1
+    1 = TMENU
+    1.NO = 1
+    1.NO.linkWrap = <li><span class="pfrechts"></span>&nbsp;|</li>
+}

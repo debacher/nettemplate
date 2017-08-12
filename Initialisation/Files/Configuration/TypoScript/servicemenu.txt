@@ -1,0 +1,12 @@
+# Dieser Code wird vom Partial service aus angesprungen
+# Hier muss unter special.value die ID der Oberseite angegeben werden
+lib.field_service = HMENU
+lib.field_service {
+ special = directory
+ special.value = {$plugin.nettemplate.ServicePid}
+ entryLevel = 1
+ wrap = <ol class="breadcrumb">|</ol>
+ 1 = TMENU
+ 1.NO = 1
+ 1.NO.linkWrap = <li>|</li>
+}

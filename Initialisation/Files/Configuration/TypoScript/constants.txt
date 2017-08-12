@@ -1,0 +1,15 @@
+resDir  = fileadmin/nettemplate/Resources
+confDir = fileadmin/nettemplate/Configuration
+
+defaultDescription = Das ist eine von Netthelp erstellte Seite
+
+styles.content.textmedia.maxW = 800
+
+plugin.tx_indexedsearch.view.templateRootPath = {$resDir}/indexed_search/Private/Templates/
+plugin.tx_indexedsearch.view.partialRootPath = {$resDir}/indexed_search/Private/Partials/
+plugin.tx_indexedsearch.view.layoutRootPath = {$resDir}/indexed_search/Private/Layouts/
+
+plugin.tx_news.view.templateRootPath = {$resDir}/news/Private/Templates/
+plugin.tx_news.view.partialRootPath = {$resDir}/news/Private/Partials/
+plugin.tx_news.view.layoutRootPath = {$resDir}/news/Private/Layouts/
+plugin.tx_news.settings.cssFile = {$resDir}/news/Public/Css/news-basic.css

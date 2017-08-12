@@ -1,0 +1,49 @@
+# dieser Code wird vom Root Template aus angesprungen
+# zur Auswahl stehen drei Arten des Menüs
+# das Hauptmenü hat drei Ebenen
+#
+lib.mainNav2 =HMENU
+lib.mainNav2 {
+  entryLevel = 1
+
+  1 = TMENU
+  1 {
+    expAll = 1
+    NO = 1
+    NO.linkWrap = <li>|</li>
+    NO.stdWrap.htmlSpecialChars = 1
+
+    IFSUB = 1
+    IFSUB.wrapItemAndSub = <li>|</li>
+    IFSUB.stdWrap.dataWrap = |<b class="caret"></b>
+
+    ACTIFSUB = 1    
+    ACTIFSUB.wrapItemAndSub = <li class="active">|</li>
+    ACTIFSUB.stdWrap.dataWrap = |<b class="caret"></b>
+  }
+
+  2 < .1
+  2 {
+    IFSUB = 1
+  IFSUB.wrapItemAndSub = <li class="dropdown dropdown-submenu">|</li>
+  IFSUB.stdWrap.dataWrap= |
+
+  ACTIFSUB = 1
+  ACTIFSUB.wrapItemAndSub = <li class="dropdown dropdown-submenu active">|</li>
+  ACTIFSUB.stdWrap.dataWrap= |
+
+  wrap = <ul class="dropdown-menu">|</ul>
+  }
+
+3 < .2
+ 3 {
+
+  ACT = 1
+  ACT.wrapItemAndSub = <li class="active">|</li>
+ 
+  wrap = <ul class="dropdown-menu">|</ul>
+ 
+ }
+ 
+
+}

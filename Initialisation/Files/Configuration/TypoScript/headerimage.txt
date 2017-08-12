@@ -1,0 +1,16 @@
+# Dieser Code wird von den Templates aus angesprungen
+lib.field_headerimage = IMG_RESOURCE
+lib.field_headerimage {
+  file.import.data = levelmedia:2, slide
+  file.treatIdAsReference = 1
+  file.import.listNum = 0
+  stdWrap.wrap (
+     <div id="skiplink">
+      <a class="skip" title="Direkt zur Navigation springen" href="#navigation">Zur Navigation springen</a><br>
+      <a class="skip" title="Direkt zum Content springen" href="#content">Zum Content springen</a>
+     </div>
+     <div id="headerimage" style="background-image:url('/|'); "><a href="/">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAO2lmDQ==" alt="Zur Startseite" width="135" height="135">
+     </a></div>
+  )
+}
